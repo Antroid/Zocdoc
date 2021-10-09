@@ -1,14 +1,14 @@
-package com.zocdoc.zocdoc.modules
+package com.zocdoc.zocdoc.modules.remote
 
 import com.google.gson.annotations.SerializedName
 
-data class Ranking(
+data class MoviesByRankingRes(
 
 	@field:SerializedName("Ranking")
-	val ranking: List<RankingItem?>? = null
+	val ranking: List<RankingItemRes>? = null
 )
 
-data class RankingItem(
+data class RankingItemRes(
 
 	@field:SerializedName("Rank")
 	val rank: Int? = null,

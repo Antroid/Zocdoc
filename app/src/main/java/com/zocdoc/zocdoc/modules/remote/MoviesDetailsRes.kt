@@ -1,23 +1,20 @@
-package com.zocdoc.zocdoc.modules
+package com.zocdoc.zocdoc.modules.remote
 
 import com.google.gson.annotations.SerializedName
 
-data class Movies(
+data class MoviesDetailsRes(
 
-	@field:SerializedName("Movies")
-	val movies: List<MoviesItem?>? = null
+	@field:SerializedName("MovieDetails")
+	val movieDetails: List<MovieDetailsItemRes>? = null
 )
 
-data class MoviesItem(
+data class MovieDetailsItemRes(
 
 	@field:SerializedName("Description")
 	val description: String? = null,
 
 	@field:SerializedName("Director")
 	val director: String? = null,
-
-	@field:SerializedName("Rank")
-	val rank: Int? = null,
 
 	@field:SerializedName("Duration")
 	val duration: String? = null,

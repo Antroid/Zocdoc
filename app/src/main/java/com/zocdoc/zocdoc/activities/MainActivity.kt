@@ -22,5 +22,10 @@ class MainActivity : DaggerAppCompatActivity() {
             ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
 
         moviesViewModel.loadMovies()
+
+        val movieIds: IntArray = intArrayOf(143)
+        moviesViewModel.loadMoviesDetails(movieIds)
+
+        moviesViewModel.loadRankingMovies(0,10)
     }
 }

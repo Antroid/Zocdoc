@@ -11,8 +11,7 @@ class MoviesRepositoryModule {
 
     @Singleton
     @Provides
-    fun provideRemoteMoviesRep(movieService: MovieService) : RemoteMoviesRepo
-    {
+    fun provideRemoteMoviesRep(movieService: MovieService) : RemoteMoviesRepo {
         return RemoteMoviesRepo(movieService)
     }
 

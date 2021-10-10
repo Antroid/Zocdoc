@@ -22,8 +22,7 @@ constructor() : ViewModel() {
 
     val rankingMoviesData = MutableLiveData<RankingMovies>()
 
-    private val errorLoadError = MutableLiveData<Boolean>()
-    private val loading = MutableLiveData<Boolean>()
+    val errorLoadError = MutableLiveData<Boolean>()
 
     private var disposable: CompositeDisposable? = null
 
@@ -75,13 +74,11 @@ constructor() : ViewModel() {
             Log.d(TAG, "RankingMoviesDetailsDisposableObserver onSuccess ${t.size}")
             rankingMoviesData.value = t
             errorLoadError.value = false
-            loading.value = false
         }
 
         override fun onError(e: Throwable) {
             Log.d(TAG, "RankingMoviesDetailsDisposableObserver onError ${e.message}")
             errorLoadError.value = true
-            loading.value = false
         }
     }
 

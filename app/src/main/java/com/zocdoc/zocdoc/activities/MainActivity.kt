@@ -1,10 +1,13 @@
 package com.zocdoc.zocdoc.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.zocdoc.zocdoc.Consts.Companion.MOVIE_ID_KEY
 import com.zocdoc.zocdoc.R
 import com.zocdoc.zocdoc.modules.local.ranking.RankingMovies
 import com.zocdoc.zocdoc.viewmodels.MainViewModel
@@ -33,18 +36,26 @@ class MainActivity : DaggerAppCompatActivity(), RankingMovieListener {
         rankingMoviesRecycleView.adapter = adapter
 
         moviesViewModel.rankingMoviesData.observe(this, Observer<RankingMovies> { data ->
+            errorText.isVisible = false
+            rankingMoviesRecycleView.isVisible = true
             adapter.setData(data)
+        })
+
+        moviesViewModel.errorLoadError.observe(this, Observer<Boolean> { error->
+            if(error) {
+                errorText.isVisible = true
+                rankingMoviesRecycleView.isVisible = false
+            }
         })
 
         moviesViewModel.loadRankingMovies(0,10)
     }
 
-    private fun initRankingObservable() {
-
-    }
-
     override fun onMovieClicked(movieId: Int) {
-        Toast.makeText(this,movieId.toString(), Toast.LENGTH_LONG).show()
+        Intent(this, MovieDetailsActivity::class.java).apply {
+            putExtra(MOVIE_ID_KEY, movieId)
+            startActivity(this)
+        }
     }
 
 

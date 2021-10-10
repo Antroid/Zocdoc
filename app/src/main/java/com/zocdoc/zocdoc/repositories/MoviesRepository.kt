@@ -1,5 +1,6 @@
 package com.zocdoc.zocdoc.repositories
 
+import com.zocdoc.zocdoc.modules.local.details.ActorDetails
 import com.zocdoc.zocdoc.modules.local.details.MovieDetails
 import com.zocdoc.zocdoc.modules.local.details.MoviesDetails
 import com.zocdoc.zocdoc.modules.local.movies.Movie
@@ -54,9 +55,19 @@ class MoviesRepository @Inject constructor(
     private fun buildMoviesDetails(res: RemoteMoviesDetails): MoviesDetails {
         val moviesDetails = MoviesDetails()
         for(item in res){
-            moviesDetails.add(MovieDetails(item.actors, item.description, item.director, item.duration, item.genres, item.id, item.name))
+            moviesDetails.add(MovieDetails(buildActorList(item.actors), item.description, item.director, item.duration, item.genres, item.id, item.name))
         }
         return moviesDetails
+    }
+
+    private fun buildActorList(res: List<String>): List<ActorDetails>{
+        val aList = ArrayList<ActorDetails>()
+
+        for(aItem in res){
+            aList.add(ActorDetails(aItem))
+        }
+
+        return aList
     }
 
     private fun buildMovies(res: RemoteMovies): Movies {

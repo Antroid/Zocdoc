@@ -3,6 +3,7 @@ package com.zocdoc.zocdoc.di.modules
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.zocdoc.zocdoc.di.scope.ViewModelKey
+import com.zocdoc.zocdoc.viewmodels.DetailsMoviesViewModel
 import com.zocdoc.zocdoc.viewmodels.MainViewModel
 import com.zocdoc.zocdoc.viewmodels.ViewModelFactory
 import dagger.Binds
@@ -16,6 +17,11 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     abstract fun bindMainViewModel(mainViewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(DetailsMoviesViewModel::class)
+    abstract fun bindDetailsMoviesViewModel(detailsMoviesViewModel: DetailsMoviesViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

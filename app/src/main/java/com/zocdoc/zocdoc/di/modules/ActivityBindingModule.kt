@@ -1,6 +1,7 @@
 package com.zocdoc.zocdoc.di.modules
 
 import com.zocdoc.zocdoc.activities.MainActivity
+import com.zocdoc.zocdoc.activities.MovieDetailsActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -20,4 +21,6 @@ abstract class ActivityBindingModule {
     @ContributesAndroidInjector
     internal abstract fun bindMainActivity(): MainActivity
 
+    @ContributesAndroidInjector
+    internal abstract fun bindMovieDetailsActivity(): MovieDetailsActivity
 }

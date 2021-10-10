@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/moviePoster"
+        android:layout_width="75dp"
+        android:layout_height="150dp"
+        android:contentDescription="@null"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/movieIndex"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/moviePoster"
+        app:layout_constraintLeft_toLeftOf="@id/moviePoster"
+        app:layout_constraintRight_toRightOf="@id/moviePoster"
+        app:layout_constraintTop_toTopOf="@id/moviePoster"
+        tools:text="1" />
+
+
+    <TextView
+        android:id="@+id/movieName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/movieId"
+        app:layout_constraintLeft_toRightOf="@id/moviePoster"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="RtlSymmetry"
+        tools:text="The Matrix" />
+
+    <TextView
+        android:id="@+id/movieId"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:paddingStart="15dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/moviePoster"
+        app:layout_constraintLeft_toRightOf="@id/moviePoster"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/movieName"
+        tools:ignore="RtlSymmetry"
+        tools:text="1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.zocdoc.zocdoc.viewmodels
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.zocdoc.zocdoc.modules.local.details.MoviesDetails
 import com.zocdoc.zocdoc.modules.local.movies.Movies
@@ -18,6 +19,11 @@ constructor() : ViewModel() {
     companion object{
         private const val TAG = "MainViewModel"
     }
+
+    val rankingMoviesData = MutableLiveData<RankingMovies>()
+
+    private val errorLoadError = MutableLiveData<Boolean>()
+    private val loading = MutableLiveData<Boolean>()
 
     private var disposable: CompositeDisposable? = null
 
@@ -67,11 +73,15 @@ constructor() : ViewModel() {
 
         override fun onNext(t: RankingMovies) {
             Log.d(TAG, "RankingMoviesDetailsDisposableObserver onSuccess ${t.size}")
-            Log.d(TAG,t[0].name)
+            rankingMoviesData.value = t
+            errorLoadError.value = false
+            loading.value = false
         }
 
         override fun onError(e: Throwable) {
             Log.d(TAG, "RankingMoviesDetailsDisposableObserver onError ${e.message}")
+            errorLoadError.value = true
+            loading.value = false
         }
     }
 

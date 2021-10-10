@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Zocdoc</string>
+    <string name="actorsList">Actors List</string>
+    <string name="director_holder">Director: %s</string>
+    <string name="duration_holder">Duration: %s</string>
+    <string name="genres_holder">Genres: %s</string>
+    <string name="booking">Booking</string>
 </resources>
